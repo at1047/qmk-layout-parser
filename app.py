@@ -37,13 +37,13 @@ def update_graph(layout_text):
             df = pd.concat([df, pd.DataFrame({"x":[x], "y":[y], "matrix":[matrix]})], ignore_index=True)
         
         # Invert both x and y axes to rotate 180 degrees
-        df['x'] = -df['x']
+        # df['x'] = -df['x']
         df['y'] = -df['y']
         
         fig = px.scatter(df, x='x', y='y', text='matrix')
         fig.update_traces(textposition='top center')
         fig.update_layout(
-            title="Keyboard Layout (180° Rotated)",
+            title="Keyboard Layout",
             xaxis_title="X Position",
             yaxis_title="Y Position",
             showlegend=False
@@ -54,4 +54,4 @@ def update_graph(layout_text):
         return px.scatter()
 
 if __name__ == '__main__':
-    app.run_server(debug=True) 
+    app.run(debug=True) 
